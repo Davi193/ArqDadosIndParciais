@@ -2,17 +2,17 @@
 Algoritmos e Estruturas de Dados II
 Trabalho I: arquivos de dados com índices parciais
 
-Objetivo: Criação de arquivos de dados e de arquivos de índice parcial para uma organização
-sequencial-indexado.
+#### Objetivo:
+Criação de arquivos de dados e de arquivos de índice parcial para uma organização sequencial-indexado.
 
-Organização: em duplas (ou individual) – se o trabalho for em dupla, definir seu grupo para a 
-dupla no AVA.
+#### Organização:
+Em duplas (ou individual) – se o trabalho for em dupla, definir seu grupo para a dupla no AVA.
 
 Inicialmente cada equipe deverá criar o seu projeto no Git Hub para fazer as postagens de
 definição de contexto, perguntas (consultas), implementação de código, arquivos de dados e
 demais arquivos necessários.
 
-Contexto do trabalho:
+#### Contexto do trabalho:
 Arquivos de dados ou datasets são arquivos definidos e estruturados como parte de uma
 organização de arquivos que serão utilizados para consultas ou para alteração do conjunto de
 dados. Grandes volumes de dados são gerados a cada dia, e esses dados são de alguma forma
@@ -33,9 +33,10 @@ Nesse contexto, a partir da pergunta formulada, seria possível estabelecer algu
 (cada hipótese é o que eu acho que poderia acontecer, possíveis respostas para minhas
 perguntas):
 
-• é possível que um tipo de joia seja líder absoluto de vendas, com mais de 50% das
-compras;
+• é possível que um tipo de joia seja líder absoluto de vendas, com mais de 50% das compras;
+
 • é possível que haja um equilíbrio de vendas entre algumas joias;
+
 • etc.
 
 A partir deste contexto, o próximo passo é extrair as informações e montar uma base de dados: o
@@ -69,9 +70,13 @@ ordenados por algum dos campos, preferencialmente o campo com um identificador (
 chave). Assim, as seguintes tarefas deverão ser realizadas:
 
 • Escolher os arquivos que serão criados com o dataset fornecido;
+
 • Cada arquivo deve ter pelo menos 3 campos (colunas) de informações: pelo menos um dos campos com dados não repetidos (o campo da chave), e pelo menos um dos campos com informações repetidas;
+
 • Definir duas ou três perguntas que se poderia fazer a esse conjunto de dados (serão as consultas que serão realizadas nos dados) – definir consultas simples, lembre-se que é um arquivo e não um banco de dados;
+
 • Ordenar os dados do arquivo de dados pelo campo chave (que não tem dados repetidos). Pense em utilizar algum dos métodos de ordenação trabalhados em aula;
+
 • Os arquivos de dados devem ser criados em modo binário (não textual).
 
 #### 2.1) Organização e registros do Arquivo de Dados:
@@ -85,9 +90,13 @@ uma linguagem de programação (C, C#, C++, Python, PHP, Java ...) que possua o 
 ou similar.
 
 • Implementar, para cada arquivo de dados:
+
     1. uma função para inserir os dados: explicar como os dados foram ordenados (se foro caso) e inseridos;
-    2. uma função para mostrar os dados,
-    3. uma função para realizar a pesquisa binária e
+    
+    2. uma função para mostrar os dados;
+    
+    3. uma função para realizar a pesquisa binária;
+    
     4. uma função para consultar dados a partir da pesquisa binária.
 
 Deverão ser construídos 2 índices parciais, um para cada arquivo de dados (salvos em arquivo
