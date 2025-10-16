@@ -43,9 +43,9 @@ seu arquivo de dados. Para definir a estrutura da base de dados, é necessário 
 informações serão relevantes incluir nessa base, e o que se tem de dados disponíveis na ou nas
 fontes disponíveis. 
 
-##Atividades a realizar
+## Atividades a realizar
 
-###1. Definição do contexto a ser explorado:
+### 1. Definição do contexto a ser explorado:
 
 O dataset contém dados de compras de dezembro de 2018 a dezembro de 2021 (3 anos) em uma
 loja online de joias de médio porte. Cada linha do arquivo representa um produto comprado.
@@ -55,7 +55,7 @@ order_id.
 O dataset para trabalho de organização de arquivos está em:
 https://www.kaggle.com/datasets/mkechinov/ecommerce-purchase-history-from-jewelry-store/data
 
-###2. Montagem dos arquivo de dados
+### 2. Montagem dos arquivo de dados
 A primeira atividade do trabalho envolve a construção dos arquivos de dados. O dataset a ser
 utilizado tem dados de compras em uma loja online realizadas durante 3 anos, e contém: data e
 hora do pedido, id do pedido, id do produto adquirido, quantidade de SKU1
@@ -74,7 +74,7 @@ chave). Assim, as seguintes tarefas deverão ser realizadas:
 • Ordenar os dados do arquivo de dados pelo campo chave (que não tem dados repetidos). Pense em utilizar algum dos métodos de ordenação trabalhados em aula;
 • Os arquivos de dados devem ser criados em modo binário (não textual).
 
-####2.1) Organização e registros do Arquivo de Dados:
+#### 2.1) Organização e registros do Arquivo de Dados:
 
 Os registros dos arquivos de dados devem ser de tamanho fixo. Para a implementação dessa
 funcionalidade, deve-se inserir espaços em branco no final dos dados textuais se necessário, para
@@ -93,7 +93,7 @@ ou similar.
 Deverão ser construídos 2 índices parciais, um para cada arquivo de dados (salvos em arquivo
 no final da execução de um programa, e carregados quando o programa for aberto).
 
-####2.2) Índices em arquivo:
+#### 2.2) Índices em arquivo:
 
 • Implemente um arquivo de índice parcial para o campo chave de cada arquivo de dados
 de acordo com a descrição do índice de arquivo da organização sequencial-indexado;
@@ -101,7 +101,7 @@ de acordo com a descrição do índice de arquivo da organização sequencial-in
 para pesquisar no arquivo de índice e, depois o comando seek para pesquisar no arquivo
 de dados.
 
-###3. Inserção/remoção de dados em um dos arquivos de dados, e reconstrução do
+### 3. Inserção/remoção de dados em um dos arquivos de dados, e reconstrução do
 índice:
 
 • Como será gerenciada a inserção de um novo registro no arquivo de dados?
@@ -111,12 +111,12 @@ Implemente operações de inserção e remoção de registros em um dos arquivos
 acarretar reconstrução do índice daquele arquivo. Definir se a reconstrução do índice ocorre a
 cada inserção/remoção, ou se seguirá algum outro critério.
 
-###4. Postar no AVA:
+### 4. Postar no AVA:
 
 • Descrição dos arquivos de dados e descrição dos arquivos de índices.
 • Link para o projeto no GiT Hub, onde deve estar: o código-fonte da implementação, os arquivos de dados, os arquivos de índices gerados para aqueles dados.
 
-##Avaliação:
+## Avaliação:
 
 • O trabalho vale 10 pontos e será avaliado conforme o cumprimento das atividades propostas e a utilização de boas práticas de programação.
 
