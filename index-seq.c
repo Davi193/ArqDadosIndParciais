@@ -116,6 +116,7 @@ int comparaPedidos(const void *a, const void *b){
     return 0;
 }
 
+// Em index-seq.c
 void criaArquivosBinarios(){
     FILE *f = fopen(ARQUIVO, "r");
     if(f == NULL){
@@ -146,22 +147,54 @@ void criaArquivosBinarios(){
     int i = 0;
 
     while(fgets(linha, sizeof(linha), f) != NULL){
-        sscanf(linha, "%24[^,],%lld,%lld,%d,%lld,%24[^,],%d,%f,%lld,%24[^,],%24[^,],%24[^,],%24[^,\n]",
-               regPed[i].dthora,
-               &regPed[i].idPedido,
-               &regProd[i].idProduto,
-               &regPed[i].quantidade,
-               &regProd[i].idCategoria,
-               regProd[i].aliasCategoria,
-               &regProd[i].idMarca,
-               &regPed[i].preco,
-               &regPed[i].idUsuario,
-               regProd[i].genero,
-               regProd[i].cor,
-               regProd[i].material,
-               regProd[i].joia);
-        regProd[i].excluido = 0; // Ativo
-        regPed[i].excluido = 0; // Ativo
+        // ler todos os campos como strings
+        char s_dthora[25], s_idPedido[25], s_idProduto[25], s_quantidade[25];
+        char s_idCategoria[25], s_aliasCategoria[25], s_idMarca[25];
+        char s_preco[25], s_idUsuario[25];
+        char s_genero[25], s_cor[25], s_material[25], s_joia[25];
+
+        sscanf(linha, "%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,],%24[^,\n]",
+               s_dthora,
+			   s_idPedido,
+			   s_idProduto,
+			   s_quantidade,
+               s_idCategoria,
+			   s_aliasCategoria,
+			   s_idMarca,
+               s_preco,
+			   s_idUsuario,
+               s_genero,
+			   s_cor,
+			   s_material, s_joia);
+
+        /* conversao:
+        atoll = ascii to long long
+        atoi  = ascii to int
+        atof  = ascii to float
+        se string = vazia, retorna 0 ou 0.0
+		*/
+        
+        // Pedido
+        strcpy(regPed[i].dthora, s_dthora);
+        regPed[i].idPedido = atoll(s_idPedido);
+        regPed[i].quantidade = atoi(s_quantidade);
+        regPed[i].preco = atof(s_preco);
+        regPed[i].idUsuario = atoll(s_idUsuario);
+        regPed[i].excluido = 0;
+        
+        // Produto
+        regProd[i].idProduto = atoll(s_idProduto);
+        regProd[i].idCategoria = atoll(s_idCategoria);
+        strcpy(regProd[i].aliasCategoria, s_aliasCategoria);
+        regProd[i].idMarca = atoi(s_idMarca);
+        strcpy(regProd[i].genero, s_genero);
+        strcpy(regProd[i].cor, s_cor);
+        strcpy(regProd[i].material, s_material);
+        strcpy(regProd[i].joia, s_joia);
+        regProd[i].excluido = 0;
+
+        regPed[i].idProduto = regProd[i].idProduto;
+        
         i++;
     }
 
@@ -376,7 +409,7 @@ void mostrarProdutos(){
             contadorExcluidos++;
             continue;
         }
-        printf("ID: %lld | Categoria: %18s | Genero: %-1s | Material: %s %s | Joia: %s\n",
+        printf("ID: %lld | Categoria: %s | Genero: %s | Material: %s %s | Joia: %s\n",
                prod.idProduto,
                prod.aliasCategoria,
                prod.genero,
@@ -396,7 +429,7 @@ void mostrarProdutos(){
                 contadorExcluidos++;
                 continue;
             }
-            printf("ID: %lld | Categoria: %18s | Genero: %-1s | Material: %s %s | Joia: %s\n",
+            printf("ID: %lld | Categoria: %s | Genero: %s | Material: %s %s | Joia: %s\n",
                    prod.idProduto,
                    prod.aliasCategoria,
                    prod.genero,
@@ -527,7 +560,7 @@ void buscarProduto(long long idProduto) {
                         printf("\n--- PRODUTO ENCONTRADO (em %s) ---\n", ARQ_PRODUTOS);
                         printf("ID Produto: %lld\n", prod.idProduto);
                         printf("Categoria:  %s (ID: %lld)\n", prod.aliasCategoria, prod.idCategoria);
-                        printf("ID Marca:      %d\n", prod.idMarca);
+                        printf("ID Marca:   %d\n", prod.idMarca);
                         printf("Cor:        %s\n", prod.cor);
                         printf("Material:   %s\n", prod.material);
                         printf("Genero:     %s\n", prod.genero);
@@ -561,7 +594,7 @@ void buscarProduto(long long idProduto) {
                     printf("\n--- PRODUTO ENCONTRADO (em %s) ---\n", ARQ_OVERFLOW_PROD);
                     printf("ID Produto: %lld\n", prod.idProduto);
                     printf("Categoria:  %s (ID: %lld)\n", prod.aliasCategoria, prod.idCategoria);
-                    printf("ID Marca:      %d\n", prod.idMarca);
+                    printf("ID Marca:   %d\n", prod.idMarca);
                     printf("Cor:        %s\n", prod.cor);
                     printf("Material:   %s\n", prod.material);
                     printf("Genero:     %s\n", prod.genero);
@@ -926,7 +959,7 @@ void reordenacaoProd() {
     criaIndexProd();
     salvaIndexProd();
 
-    printf("--- REORDENACAO CONCLUIDA ---\n\n");
+    printf("--- REORDENACAO CONCLUIDA ---\n");
 }
 
 void reordenacaoPed() {
@@ -1003,7 +1036,7 @@ void reordenacaoPed() {
     criaIndexPed();
     salvaIndexPed();
 
-    printf("--- REORDENACAO CONCLUIDA ---\n\n");
+    printf("--- REORDENACAO CONCLUIDA ---\n");
 }
 
 int main(){
@@ -1028,22 +1061,22 @@ int main(){
         salvaIndexPed();
     }
 	
-	mostraIndexProd();
-    mostraIndexPed();
+	//mostraIndexProd();
+    //mostraIndexPed();
 
-    mostrarProdutos();
-    mostrarPedidos();
+    //mostrarProdutos();
+    //mostrarPedidos();
 
     // CONSULTA
 
     printf("\n--- TESTANDO BUSCAS ---\n");
     buscarProduto(1956663846231867998); // qual o produto com esse id?
     buscarProduto(1956663846231867995); 
-    buscarProduto(9999999999999999999); // id inexistente
+    buscarProduto(1782242000000000000); // id inexistente
     
-    buscarPedido(2592206014006690674); // qual o pedido com esse id?
-    buscarPedido(2706988939159274080);
-    buscarProduto(888888888888888888); // id inexistente
+    buscarPedido(1924899396621697920); // qual o pedido com esse id?
+    buscarPedido(1927556184420647176);
+    buscarPedido(1273378282000004270); // id inexistente
 
     // REMOCAO LOGICA
 
@@ -1051,12 +1084,12 @@ int main(){
     long long idRemocaoProd = 1956663846231867998;
     buscarProduto(idRemocaoProd); // acha
     removerProduto(idRemocaoProd); // remove
-    buscarProduto(idRemocaoProd); // nao acha mais
+    buscarProduto(idRemocaoProd); // nao acha mais (tudo isso eh na primeira vez soh)
 
-    long long idRemocaoPed = 2592206014006690674;
+    long long idRemocaoPed = 1927556184420647176;
     buscarPedido(idRemocaoPed); // acha
     removerPedido(idRemocaoPed); // remove
-    buscarPedido(idRemocaoPed); // nao acha mais
+    buscarPedido(idRemocaoPed); // nao acha mais (tudo isso eh na primeira vez soh)
 
     // INSERCAO
 
@@ -1090,32 +1123,31 @@ int main(){
     // REORDENACAO
 
     printf("\n--- TESTANDO REORDENACAO DE PRODUTOS ---\n");
-    printf("== ANTES DA REORDENACAO ==\n");
-    mostrarProdutos();
-    mostraIndexProd();
+    printf("=== ANTES DA REORDENACAO ===\n");
+    //mostrarProdutos();
+    //mostraIndexProd();
 
     reordenacaoProd();
 
-    printf("\n== APOS A REORDENACAO ==\n");
-    mostrarProdutos(); // mostra o Overflow primeiro
-    mostraIndexProd(); // indice refeito
+    printf("\n=== APOS A REORDENACAO ===\n");
+    //mostrarProdutos(); // mostra o Overflow primeiro
+    //mostraIndexProd(); // indice refeito
 
-    printf("\n== VERIFICANDO BUSCAS POS-REORDENACAO ==\n");
-    buscarProduto(idRemocaoProd); // não encontrado
+    printf("\n=== VERIFICANDO BUSCAS POS-REORDENACAO ===\n");
+    buscarProduto(idRemocaoProd); // nao encontrado
     buscarProduto(novoProduto.idProduto); // encontrado
 
-    printf("\n--- TESTANDO REORDENACAO DE PEDIDOS ---\n");
-    printf("== ANTES DA REORDENACAO ==\n");
-    mostrarPedidos();
-    mostraIndexPed();
+    printf("=== ANTES DA REORDENACAO ===\n");
+    //mostrarPedidos();
+    //mostraIndexPed();
 
     reordenacaoPed();
 
-    printf("\n== APOS A REORDENACAO ==\n");
-    mostrarPedidos(); // mostra o Overflow primeiro
-    mostraIndexPed(); // indice refeito
-    printf("\n== VERIFICANDO BUSCAS POS-REORDENACAO ==\n");
-    buscarPedido(idRemocaoPed); // não encontrado
+    printf("\n=== APOS A REORDENACAO ===\n");
+    //mostrarPedidos(); // mostra o Overflow primeiro
+    //mostraIndexPed(); // indice refeito
+    printf("\n=== VERIFICANDO BUSCAS POS-REORDENACAO ===\n");
+    buscarPedido(idRemocaoPed); // nao encontrado
     buscarPedido(novoPedido.idPedido); // encontrado
     
     return 0;
