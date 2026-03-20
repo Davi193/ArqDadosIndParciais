@@ -119,8 +119,7 @@ de dados.
 Implemente operações de inserção e remoção de registros em um dos arquivos, o que vai
 acarretar reconstrução do índice daquele arquivo. Definir se a reconstrução do índice ocorre a
 cada inserção/remoção, ou se seguirá algum outro critério.
-## Avaliação:
 
-• O trabalho vale 10 pontos e será avaliado conforme o cumprimento das atividades propostas e a utilização de boas práticas de programação.
+## Avaliação:
 
 • Não é permitido o uso da memória RAM para armazenar todos (ou grande parte) dos registros do arquivo de dados para efetuar as buscas, devem ser trazidos para a memória apenas os dados necessários. Todas as operações solicitadas devem ser executadas no arquivo de dados armazenado em memória secundária.
