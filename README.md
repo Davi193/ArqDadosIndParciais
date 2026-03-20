@@ -6,10 +6,9 @@ Trabalho I: arquivos de dados com índices parciais
 Criação de arquivos de dados e de arquivos de índice parcial para uma organização sequencial-indexado.
 
 #### Organização:
-Em duplas (ou individual) – se o trabalho for em dupla, definir seu grupo para a dupla no AVA.
+Realizado de forma individual.
 
-Inicialmente cada equipe deverá criar o seu projeto no Git Hub para fazer as postagens de
-definição de contexto, perguntas (consultas), implementação de código, arquivos de dados e
+Aqui estão as postagens de definição de contexto, consultas obrigatórias, implementação de código, arquivos de dados e
 demais arquivos necessários.
 
 #### Contexto do trabalho:
@@ -119,12 +118,6 @@ de dados.
 Implemente operações de inserção e remoção de registros em um dos arquivos, o que vai
 acarretar reconstrução do índice daquele arquivo. Definir se a reconstrução do índice ocorre a
 cada inserção/remoção, ou se seguirá algum outro critério.
-
-### 4. Postar no AVA:
-
-• Descrição dos arquivos de dados e descrição dos arquivos de índices.
-• Link para o projeto no GiT Hub, onde deve estar: o código-fonte da implementação, os arquivos de dados, os arquivos de índices gerados para aqueles dados.
-
 ## Avaliação:
 
 • O trabalho vale 10 pontos e será avaliado conforme o cumprimento das atividades propostas e a utilização de boas práticas de programação.
