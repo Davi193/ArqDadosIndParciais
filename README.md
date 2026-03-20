@@ -1,5 +1,6 @@
 # Trabalho
 Algoritmos e Estruturas de Dados II
+
 Trabalho I: arquivos de dados com índices parciais
 
 #### Objetivo:
